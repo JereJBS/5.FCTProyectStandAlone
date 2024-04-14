@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DbServiceService } from '../../services/db-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mainwindow',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
   templateUrl: './mainwindow.component.html',
   styleUrl: './mainwindow.component.css'
 })
-export class MainwindowComponent {
+export class MainwindowComponent implements OnInit{
+
+  constructor(private api: DbServiceService, private router: Router){}
+
+  ngOnInit(): void {}
+
+
+  registerNavigate(){
+    this.router.navigate(["register"])
+  }
 
 }

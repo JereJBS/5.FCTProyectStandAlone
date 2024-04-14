@@ -4,6 +4,8 @@ import { RegisterInterface } from '../interfaces/Register.interface';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../interfaces/ApiResponse.interface';
 import { LoginInterface } from '../interfaces/Login.interface';
+// import * as jwt from 'jsonwebtoken';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +24,15 @@ export class DbServiceService {
   Login(form: LoginInterface): Observable<ApiResponse>{
     return this.http.post<ApiResponse>(this.loginEndpoint, form)
   }
+
+  getToken():string{
+    return localStorage.getItem('jwtToken')!
+  }
+
+  // getDecodedToken(): any{
+  //   const token = this.getToken();
+  //   return token ? jwt_decode(token) : null
+  // }
+
 
 }
