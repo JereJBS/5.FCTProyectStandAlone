@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RegisterInterface } from '../interfaces/register.interface';
+import { RegisterInterface } from '../interfaces/Register.interface';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../interfaces/ApiResponse.interface';
 

@@ -1,5 +1,5 @@
 export interface ApiResponse {
 
-    username:"",
-    password:""
+    status:"",
+    response:""
 }
