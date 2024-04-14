@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit{
   constructor(private api: DbServiceService, private router: Router){}
 
   userRegister(form: RegisterInterface){
-    this.api.Register(form).subscribe(data => {
+    this.api.Register(form).subscribe(showToken => {
       this.router.navigate(['mainwindow'])
     })
   }
