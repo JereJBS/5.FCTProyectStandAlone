@@ -13,15 +13,10 @@ export class TokenStorageService {
   }
 
   public setToken(token: string){
-    this.token = token
+    localStorage.setItem(this.token, token)
   }
 
   public getToken(){
-    return this.token
+    return localStorage.getItem(this.token);
   }
-
-  public saveToken(token: string): void{
-
-  }
-
 }
