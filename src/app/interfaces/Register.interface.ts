@@ -1,6 +1,6 @@
 export interface RegisterInterface{
-    username: String,
-    password: String,
+    username: string,
+    password: string,
     firstname: string,
     lastname: string,
     country: string,

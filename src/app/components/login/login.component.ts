@@ -21,10 +21,11 @@ export class LoginComponent implements OnInit{
   }
   
   ngOnInit(): void {}
-  constructor(private api: DbServiceService, private router: Router){}
+  constructor(private api: DbServiceService, private router: Router, private token: TokenStorageService){}
 
   userLogin(form: LoginInterface){
     this.api.Login(form).subscribe(showToken => {
+      this.token.setToken(showToken.token)
       this.router.navigate(["mainwindow"])
     })
     

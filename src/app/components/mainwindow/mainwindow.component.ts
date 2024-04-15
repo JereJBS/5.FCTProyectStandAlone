@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DbServiceService } from '../../services/db-service.service';
 import { Router } from '@angular/router';
 import { RegisterInterface } from '../../interfaces/Register.interface';
+import { jwtDecode } from 'jwt-decode';
+import { TokenStorageService } from '../../services/token-storage.service';
 // import { enviroment } from '../../../enviroments/enviroment'
 
 @Component({
@@ -15,25 +17,38 @@ export class MainwindowComponent implements OnInit{
 
   
   
-  user: RegisterInterface= {
+  public user = {
     username: "",
-    password: "",
-    firstname: "",
-    lastname: "",
-    country: "",
-    email: ""
+    email: "",
+    firstname:"",
+    lastname:"",
+    country:""
   };
 
-  constructor(private api: DbServiceService, private router: Router){
+  public userData(){
+    const showInfoToken: RegisterInterface = jwtDecode(this.tokenStorageService.getToken()?.toString())
+    console.log(showInfoToken);
+    
+    this.user.username = showInfoToken.username
+    this.user.email = showInfoToken.email
+    this.user.firstname = showInfoToken.firstname
+    this.user.lastname = showInfoToken.lastname
+    this.user.country = showInfoToken.country
+  }
+
+  constructor(private api: DbServiceService, private router: Router, private tokenStorageService: TokenStorageService){
     // this.api.getUser(enviroment.userId)
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userData()
+  }
 
 
   registerNavigate(){
     // this.api.setToken(null)
     // window.sessionStorage.clear()
+    this.tokenStorageService.logOut()
     this.router.navigate(["register"])
   }
 
