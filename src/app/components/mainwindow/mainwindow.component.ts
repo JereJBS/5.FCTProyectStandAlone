@@ -17,6 +17,7 @@ export class MainwindowComponent implements OnInit{
 
 
   registerNavigate(){
+    this.api.setToken(null)
     this.router.navigate(["register"])
   }
 

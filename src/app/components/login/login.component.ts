@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit{
 
   userLogin(form: LoginInterface){
     this.api.Login(form).subscribe(showToken => {
+      this.api.setToken(showToken)
       this.router.navigate(["mainwindow"])
       console.log(showToken);
     })
