@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit{
 
   userRegister(form: RegisterInterface){
     this.api.Register(form).subscribe(showToken => {
-      this.api.setToken(showToken)
       this.router.navigate(['mainwindow'])
     })
   }

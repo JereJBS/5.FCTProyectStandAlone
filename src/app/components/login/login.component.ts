@@ -3,6 +3,7 @@ import { DbServiceService } from '../../services/db-service.service';
 import { Router } from '@angular/router';
 import { LoginInterface } from '../../interfaces/Login.interface';
 import { FormsModule } from '@angular/forms';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,11 @@ export class LoginComponent implements OnInit{
   }
   
   ngOnInit(): void {}
-  constructor(private api: DbServiceService, private router: Router){}
+  constructor(private api: DbServiceService, private router: Router, private tokenStorage: TokenStorageService){}
 
   userLogin(form: LoginInterface){
     this.api.Login(form).subscribe(showToken => {
-      this.api.setToken(showToken)
       this.router.navigate(["mainwindow"])
-      console.log(showToken);
     })
     
   }

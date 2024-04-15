@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DbServiceService } from '../../services/db-service.service';
 import { Router } from '@angular/router';
+import { RegisterInterface } from '../../interfaces/Register.interface';
+// import { enviroment } from '../../../enviroments/enviroment'
 
 @Component({
   selector: 'app-mainwindow',
@@ -11,13 +13,27 @@ import { Router } from '@angular/router';
 })
 export class MainwindowComponent implements OnInit{
 
-  constructor(private api: DbServiceService, private router: Router){}
+  
+  
+  user: RegisterInterface= {
+    username: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    country: "",
+    email: ""
+  };
+
+  constructor(private api: DbServiceService, private router: Router){
+    // this.api.getUser(enviroment.userId)
+  }
 
   ngOnInit(): void {}
 
 
   registerNavigate(){
-    this.api.setToken(null)
+    // this.api.setToken(null)
+    // window.sessionStorage.clear()
     this.router.navigate(["register"])
   }
 
