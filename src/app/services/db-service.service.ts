@@ -33,7 +33,7 @@ export class DbServiceService {
   }
 
   getToken():string{
-    return sessionStorage.getItem('jwtToken')!
+    return sessionStorage.getItem(this.token)!
   }
 
   // getDecodedToken(): any{
